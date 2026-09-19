@@ -16,6 +16,12 @@ from detector import WeaponDetector
 from pose_action import ActionAnalyzer
 from alert import AlertManager
 
+# ASGI application alias for Vercel / serverless cloud deployments
+try:
+    from api_server import app
+except Exception:
+    app = None
+
 # Skeleton connection pairs for drawing COCO 17 keypoints
 SKELETON_CONNECTIONS = [
     (0, 1), (0, 2), (1, 3), (2, 4),               # Head / Facial features
