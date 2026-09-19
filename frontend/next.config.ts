@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const backendUrl =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -10,13 +9,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@": path.resolve(__dirname, "src"),
-    };
-    return config;
-  },
+  turbopack: {},
   async rewrites() {
     return [
       {

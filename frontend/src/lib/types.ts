@@ -1,3 +1,23 @@
+export type ThreatTier = "NORMAL" | "WARNING" | "CRITICAL";
+
+export type ConnectionStatus = "connected" | "connecting" | "disconnected" | "error";
+
+export type CameraStatus = "online" | "offline" | "connecting";
+
+export type ViolenceStatus = "INACTIVE" | "FIGHTING" | "CHOKING";
+
+export interface BoundingBox {
+  id: number | string;
+  x: number; // 0 to 1 normalized
+  y: number;
+  width: number;
+  height: number;
+  label: string;
+  confidence: number;
+  type: "person" | "weapon" | "violence" | "fall";
+  keypoints?: [number, number, number][]; // [x, y, conf]
+}
+
 export interface Telemetry {
   type: "telemetry";
   fps: number;
@@ -8,9 +28,8 @@ export interface Telemetry {
   neck_hold_detected: boolean;
   fallen_count: number;
   timestamp: string;
+  boxes?: BoundingBox[];
 }
-
-export type ThreatTier = "NORMAL" | "WARNING" | "CRITICAL";
 
 export interface AlertEvent {
   type: "alert";
@@ -21,6 +40,7 @@ export interface AlertEvent {
   snapshot_url: string;
   channels_notified: string[];
   timestamp: string;
+  confidence?: number;
 }
 
 export type WSMessage = Telemetry | AlertEvent;
@@ -33,11 +53,10 @@ export interface AlertHistoryItem {
   snapshot_url: string;
   tier: number;
   channels_notified: string[];
+  acknowledged?: boolean;
 }
 
 export type AlertRecord = AlertHistoryItem;
-
-export type ConnectionStatus = "connected" | "connecting" | "disconnected" | "error";
 
 export interface AlertHistoryResponse {
   alerts: AlertHistoryItem[];
@@ -123,4 +142,24 @@ export interface SystemStats {
   avg_fps: number;
   peak_person_count: number;
   uptime_sec: number;
+}
+
+export interface GuardiaState {
+  wsStatus: ConnectionStatus;
+  cameraStatus: CameraStatus;
+  fps: number;
+  fpsHistory: number[];
+  personCount: number;
+  weaponCount: number;
+  violenceStatus: ViolenceStatus;
+  fallenCount: number;
+  threatTier: ThreatTier;
+  systemStatus: SystemStatus | null;
+  incidents: AlertRecord[];
+  uptimeSec: number;
+  isMuted: boolean;
+  isDemo: boolean;
+  isSidebarCollapsed: boolean;
+  alertCooldownRemaining: number;
+  activeBoundingBoxes: BoundingBox[];
 }
