@@ -2,13 +2,10 @@
   "name": "guardia-ai",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "frontend"
-  ],
   "scripts": {
-    "dev": "npm --workspace=frontend run dev",
-    "build": "npm --workspace=frontend run build",
-    "start": "npm --workspace=frontend run start"
+    "dev": "next dev frontend",
+    "build": "next build frontend",
+    "start": "next start frontend"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",
