@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Model weights & large binary checkpoints (YOLO, CLIP, ONNX, PyTorch)
+*.pt
+*.pth
+*.onnx
+*.bin
+weights/
+
+# Surveillance Snapshots
+snapshots/*
+!snapshots/.gitkeep
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs and debug files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tempCodeRunnerFile.py
+uvicorn.log
+uvicorn_err.log
+
+# Node.js & Next.js
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+.next/
+out/
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
