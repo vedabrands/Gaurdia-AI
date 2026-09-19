@@ -133,7 +133,11 @@ TWILIO_CONTENT_SID = os.getenv("TWILIO_CONTENT_SID", "")          # Content Temp
 # 5. VIDEO INPUT SOURCE
 # ==========================================
 # 0 = Default webcam, or "video.mp4", or "rtsp://..."
-VIDEO_SOURCE = os.getenv("VIDEO_SOURCE", 0)
+_raw_video_source = os.getenv("VIDEO_SOURCE", 0)
+try:
+    VIDEO_SOURCE = int(_raw_video_source)
+except (ValueError, TypeError):
+    VIDEO_SOURCE = _raw_video_source
 
 # ==========================================
 # 6. DISPLAY & FULLSCREEN SETTINGS
