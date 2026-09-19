@@ -127,6 +127,15 @@ Open your browser at **`http://localhost:3000`** to view the live dashboard.
 
 ---
 
+### 4. Deploy Frontend to Vercel
+1. Import this repository into **[Vercel](https://vercel.com/)**.
+2. Set **Framework Preset** to `Next.js`.
+3. Set **Root Directory** to `frontend`.
+4. (Optional) Set `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_WS_URL` to point to your hosted FastAPI backend.
+5. Click **Deploy**.
+
+---
+
 ### Alternative: Standalone Desktop Mode
 To run the system as a local desktop application without the web dashboard:
 ```bash
